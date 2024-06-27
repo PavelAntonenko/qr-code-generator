@@ -49,7 +49,7 @@
             qrcode.makeCode(link);
 
             setTimeout(() => {
-                const imgSrc = 'image.png'; // URL of the image you want to embed
+                const imgSrc = window.location.origin + '/qr-code-generator//image.png'; // Absolute URL of the image
                 const qrCanvas = document.querySelector('#qrcode canvas');
                 const context = qrCanvas.getContext('2d');
 
