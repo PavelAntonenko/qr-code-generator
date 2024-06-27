@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="container">
-        <input type="text" id="linkInput" placeholder="Enter URL">
+        <input type="text" id="linkInput" placeholder="Enter URL" value="https://www.snapchat.com/lens/82957e02f11840f0980fbf46cff3006f">
         <button onclick="generateQRCode()">Generate QR Code</button>
         <div id="qrcode"></div>
     </div>
@@ -45,7 +45,7 @@
             qrcode.makeCode(link);
 
             setTimeout(() => {
-                const imgSrc = window.location.origin + '/qr-code-generator/image.png'; // Absolute URL of the image
+                const imgSrc = 'https://pavelantonenko.github.io/qr-code-generator/image.png'; // Absolute URL of the image
                 const qrCanvas = document.querySelector('#qrcode canvas');
                 const context = qrCanvas.getContext('2d');
 
@@ -60,6 +60,9 @@
                 };
             }, 500);
         }
+
+        // Automatically generate QR code with prepopulated URL
+        window.onload = generateQRCode;
     </script>
 </body>
 </html>
