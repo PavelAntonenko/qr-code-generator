@@ -2,7 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="wid<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator with Embedded Image</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        #qrcode img {
+            display: none;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFFC00; /* Snapchat background color */
+        }
+        #container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="linkInput" placeholder="Enter URL">
+        <button onclick="generateQRCode()">Generate QR Code</button>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            const link = document.getElementById("linkInput").value;
+            document.getElementById("qrcode").innerHTML = "";
+
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: link,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",  // Black color for the QR code
+                colorLight: "#FFFC00", // Yellow background color
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            qrcode.makeCode(link);
+
+            setTimeout(() => {
+                const imgSrc = 'image.png'; // URL of the image you want to embed
+                const qrCanvas = document.querySelector('#qrcode canvas');
+                const context = qrCanvas.getContext('2d');
+
+                const img = new Image();
+                img.src = imgSrc;
+                img.onload = () => {
+                    const imgSize = 64;  // Adjust size as needed
+                    const x = (qrCanvas.width - imgSize) / 2;
+                    const y = (qrCanvas.height - imgSize) / 2;
+                    context.drawImage(img, x, y, imgSize, imgSize);
+                };
+            }, 500);
+        }
+    </script>
+</body>
+</html>
+th=device-width, initial-scale=1.0">
     <title>QR Code Generator with Embedded Image</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
