@@ -6,9 +6,6 @@
     <title>QR Code Generator with Embedded Image</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        #qrcode img {
-            display: none;
-        }
         body {
             display: flex;
             justify-content: center;
@@ -18,6 +15,9 @@
         }
         #container {
             text-align: center;
+        }
+        #qrcode img {
+            display: none;
         }
     </style>
 </head>
@@ -61,7 +61,7 @@
             }, 500);
         }
 
-        // Automatically generate QR code with prepopulated URL
+        // Automatically generate QR code with prepopulated URL on page load
         window.onload = generateQRCode;
     </script>
 </body>
